@@ -1,13 +1,13 @@
 document.querySelector('button').addEventListener('click', apiRequest)
 
 async function apiRequest() {
-    const rapperName = document.querySelector('input').value
+    const user = document.querySelector('input').value
     try {
         const response = await fetch(`https://mtbi-tracker-api.onrender.com/api/${user}`)
         const data = await response.json()
 
         console.log(data)
-        document.querySelector('h2').innerText = data.birthName
+        document.querySelector('h2').innerText = data.name
     } catch (error) {
         console.log(error)
     }

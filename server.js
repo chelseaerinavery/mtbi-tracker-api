@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const PORT = 8000
+
+app.use(cors())
 
 const users = {
     'john doe':
@@ -16,16 +19,19 @@ const users = {
     // },
     // dateOfEvent: `${new Date(`20231001`)}`,
     {
+        'name': "John Doe",
         'age': 22,
         'totalScore': 22,
         'currentSeverity': 'moderate-severe'
     },
     'sasha fierce': {
+        'name': "Sasha Fierce",
         'age': 40,
         'totalScore': 10,
         'currentSeverity': 'mild'
     },
     'unknown': {
+        'name': "unknown",
         'age': 0,
         'totalScore': 0,
         'currentSeverity': null,
