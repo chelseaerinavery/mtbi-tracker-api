@@ -18,12 +18,12 @@ const users = {
     {
         'age': 22,
         'totalScore': 22,
-        'currentSeverity': `moderate-severe`
+        'currentSeverity': 'moderate-severe'
     },
     'sasha fierce': {
         'age': 40,
         'totalScore': 10,
-        'currentSeverity': `mild`
+        'currentSeverity': 'mild'
     },
     'unknown': {
         'age': 0,
@@ -36,12 +36,21 @@ app.get('/', (request, response) => {
     response.sendFile(__dirname + '/index.html')
 })
 
+app.get('/api/:name', (request, response) => {
+    const user = request.params.name.toLowerCase()
+    if (users[user]) {
+        response.json(users[user])
+    } else {
+        response.json(users['unknown'])
+    }
+})
+
 app.get('/api', (request, response) => {
     response.json(users)
 })
 
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`The server is now running on ${PORT}! Better go catch it!`)
 })
 
