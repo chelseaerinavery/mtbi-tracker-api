@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 const PORT = 8000
 
-const patient = {
-    'name': 'John Doe',
+const users = {
+    'john doe':
     // birthDate: `${new Date(`19900101`)}`,
     // currentDate: `${new Date()}`,
     // age: (currentDate, birthDate, age) => {
@@ -15,16 +15,29 @@ const patient = {
     //     return age;
     // },
     // dateOfEvent: `${new Date(`20231001`)}`,
-    'totalScore': 22,
-    'currentSeverity': `moderate-severe`
+    {
+        'age': 22,
+        'totalScore': 22,
+        'currentSeverity': `moderate-severe`
+    },
+    'sasha fierce': {
+        'age': 40,
+        'totalScore': 10,
+        'currentSeverity': `mild`
+    },
+    'unknown': {
+        'age': 0,
+        'totalScore': 0,
+        'currentSeverity': null,
+    }
 }
 
-app.get(`/ `, (request, response) => {
-    response.sendFile(_dirname + '/index.html')
+app.get('/', (request, response) => {
+    response.sendFile(__dirname + '/index.html')
 })
 
-app.get(`/api `, (request, response) => {
-    response.json(patient)
+app.get('/api', (request, response) => {
+    response.json(users)
 })
 
 
